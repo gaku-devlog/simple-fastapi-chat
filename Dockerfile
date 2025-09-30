@@ -28,5 +28,8 @@ COPY backend ./backend
 # フロントのビルド成果物を backend/static にコピー
 COPY --from=frontend-build /app/frontend/build ./frontend_build
 
+# /tmp/chat.db をコピー
+COPY tmp/chat.db /tmp/chat.db
+
 # FastAPI アプリ起動
 CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]

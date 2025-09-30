@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 import datetime
 
-DATABASE_URL = "sqlite:///./db/chat.db"  # dbフォルダに保存
+DATABASE_URL = "sqlite:////tmp/chat.db" # dbフォルダに保存
 
 Base = declarative_base()
 
