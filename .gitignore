@@ -1,0 +1,19 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Node.js
+node_modules/
+frontend/build/
+frontend_build/
+
+# Env files (絶対公開しない)
+.env
+frontend/.env
+
+# キャッシュやログ
+*.log
+
+# その他
+memo.txt
