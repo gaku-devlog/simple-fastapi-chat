@@ -2,6 +2,7 @@
   "name": "fastapi-chat-dev",
   "context": "..",
   "dockerFile": "../Dockerfile",
+  "workspaceFolder": "/workspaces/fastapi-chat",
   "runArgs": [
     "--env-file",
     ".env"
