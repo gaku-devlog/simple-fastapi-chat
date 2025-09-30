@@ -91,7 +91,7 @@ GitHub Actions を用いた CI/CD パイプラインを構築し、`main` ブラ
 │   │       └── RegisterForm.js   # 登録フォーム
 │   └── package.json              # React 依存ライブラリ
 │
-├── db/                           # SQLite DB ファイル格納先
+├── tmp/                           # SQLite DB ファイル格納先
 │   └── chat.db
 │
 ├── .devcontainer/                # VS Code Dev Containers 用設定
