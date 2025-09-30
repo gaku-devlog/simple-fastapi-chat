@@ -56,9 +56,9 @@ FastAPI の WebSocket 機能を活用した、複数ユーザー対応のリア�
 
 ## Deployment（デプロイ）
 
-本アプリケーションは **Azure Container Apps** 上にデプロイ予定です。  
-GitHub Actions を用いた CI/CD パイプラインを構築し、`main` ブランチへの push をトリガーに自動デプロイされるようにします。 
-（※現在はデモ用として 最小構成（単一コンテナ + SQLite） を採用しています。本番運用を想定する場合は、マネージドDBの導入やストレージ永続化など、改修が必要になります） 
+本アプリケーションは **Azure Container Apps** 上にデプロイしています。  
+また、GitHub Actions を用いた CI/CD パイプラインを構築し、`main` ブランチへの push をトリガーに自動デプロイされるようにしています。  
+（※デモ用として 最小構成（単一コンテナ + SQLite） を採用。本番運用ではマネージドDBやストレージ永続化が必要） 
 
 - **デプロイ先**: Azure Container Apps  
 - **レジストリ**: Azure Container Registry (ACR)  
@@ -66,7 +66,7 @@ GitHub Actions を用いた CI/CD パイプラインを構築し、`main` ブラ
 - **CI/CD**: GitHub Actions による Docker build → ACR push → Container Apps update  
 
 ### アクセス URL（予定）
-👉 https://fastapi-chat-demo.<ランダム名>.azurecontainerapps.io  
+👉 [Simple FastAPI Chat](https://simple-fastapi-chat-app.gentleriver-615b0d67.japaneast.azurecontainerapps.io)
 
 ※ 初回アクセス時はスリープからの起動で数秒待機が発生する場合があります  
 ※ 本番環境では新規ユーザー登録機能は **無効化設定** しています
@@ -91,11 +91,15 @@ GitHub Actions を用いた CI/CD パイプラインを構築し、`main` ブラ
 │   │       └── RegisterForm.js   # 登録フォーム
 │   └── package.json              # React 依存ライブラリ
 │
-├── tmp/                           # SQLite DB ファイル格納先
+├── tmp/                          # SQLite DB ファイル格納先
 │   └── chat.db
 │
 ├── .devcontainer/                # VS Code Dev Containers 用設定
 │   └── devcontainer.json
+│
+├── .github/                      # GitHub Actions 設定
+│   └── workflows/
+│       └── deploy.yml            # CI/CD パイプライン定義
 │
 ├── requirements.txt              # Python 依存ライブラリ
 ├── Dockerfile                    # コンテナ定義
