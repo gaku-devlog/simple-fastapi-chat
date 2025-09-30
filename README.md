@@ -65,7 +65,7 @@ FastAPI の WebSocket 機能を活用した、複数ユーザー対応のリア�
 - **スケーリング**: 最小インスタンス = 0、最大インスタンス = 1（コスト最適化）  
 - **CI/CD**: GitHub Actions による Docker build → ACR push → Container Apps update  
 
-### アクセス URL（予定）
+### アクセス URL
 👉 [Simple FastAPI Chat](https://simple-fastapi-chat-app.gentleriver-615b0d67.japaneast.azurecontainerapps.io)
 
 ※ 初回アクセス時はスリープからの起動で数秒待機が発生する場合があります  
