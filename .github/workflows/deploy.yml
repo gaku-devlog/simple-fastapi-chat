@@ -1,0 +1,38 @@
+name: Deploy to Azure Container Apps
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Docker Login to ACR
+        run: |
+          echo ${{ secrets.REGISTRY_PASSWORD }} | docker login simplefastapichatacr.azurecr.io \
+            -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
+
+      - name: Build and Push Docker image
+        run: |
+          IMAGE_TAG=simplefastapichatacr.azurecr.io/simple-fastapi-chat:latest
+          docker build -t $IMAGE_TAG .
+          docker push $IMAGE_TAG
+
+      - name: Deploy to Azure Container Apps
+        run: |
+          az containerapp update \
+            --name simple-fastapi-chat-app \
+            --resource-group simple-fastapi-chat-rg \
+            --image simplefastapichatacr.azurecr.io/simple-fastapi-chat:latest
+
